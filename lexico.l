@@ -13,7 +13,7 @@ CARACTER [a-zA-Z0-9_]
 ESPACIO " "
 DOSPUNTOS ":"
 COMA_C ","
-SALTOLINEA "\n"
+SALTOLINEA "\n" /* salto de línea means "break of the line" */
 INTERROGACION "?"
 COMILLA_DOBLE "\""
 COMILLA_SIMPLE "'"
@@ -80,15 +80,17 @@ int main(int argc,char *argv[]){
 	
 	if((yyin = fopen(argv[1], "rt")) == NULL) {
 		printf("\nNo se puede abrir el archivo: %s\n", argv[1]);
+		/* unable to open file */
 	}else{
 		//yylex();
 		yyparse();
 	}
 	
 	fclose(yyin);
-	printf("\nSINTAXIS_EXITOSA\n");
+	printf("\nSINTAXIS_EXITOSA\n"); /* syntax successful */
 	return 0;
 }
+/* mensaje means message */
 void yyerror(char *mensaje){
 	printf ("\nerror %s\n", mensaje);
 	exit(-1);
